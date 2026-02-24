@@ -8,7 +8,7 @@ public class Main
         Path path = Path.of("fisier.txt");
         String continut = Files.readString(path);
         StringBuilder text=new StringBuilder(continut);
-        String semne=",.!?;:()[]{}";
+        String semne=",.!?;:";
 
         for (int i=0;i<text.length();i++)
         {
@@ -22,6 +22,11 @@ public class Main
                 i++;
                 while(i<text.length() && text.charAt(i)==' ')
                     text.deleteCharAt(i);
+            }
+            else
+            if (text.charAt(i)>='A' && text.charAt(i)<='Z')
+            {
+                text.setCharAt(i, (char) (text.charAt(i) + ('a' - 'A')));
             }
         }
 
