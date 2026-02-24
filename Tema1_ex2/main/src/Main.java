@@ -8,12 +8,21 @@ public class Main
         Path path = Path.of("fisier.txt");
         String continut = Files.readString(path);
         StringBuilder text=new StringBuilder(continut);
-        String semne=",.!?;:";
+        String semne=",.!?;:()[]{}";
 
         for (int i=0;i<text.length();i++)
         {
-            if (semne.indexOf(text.charAt(i))!=-1)
+            if (semne.indexOf(text.charAt(i))!=-1) {
                 text.deleteCharAt(i);
+                i--;
+            }
+            else
+            if (text.charAt(i)==' ')
+            {
+                i++;
+                while(i<text.length() && text.charAt(i)==' ')
+                    text.deleteCharAt(i);
+            }
         }
 
         continut=text.toString();
